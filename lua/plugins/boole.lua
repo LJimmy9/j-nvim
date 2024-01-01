@@ -9,6 +9,7 @@ return {
 		additions = {
 			{ "Foo", "Bar", "Baz" },
 			{ "tic", "tac", "toe" },
+			{ "north", "south", "east", "west" },
 			{ "dark", "light" },
 		},
 		allow_caps_additions = {

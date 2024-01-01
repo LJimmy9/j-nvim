@@ -10,30 +10,35 @@ local servers = {
 	go = {
 		lsp = "gopls",
 	},
+	terraform = {
+		lsp = "terraformls",
+	},
+	shell = {
+		lsp = "bashls",
+		formatter = "shfmt",
+		diagnostics = "shellcheck",
+	},
 }
 
-local function extractLspValues(serverNames)
+local function extractValues(serverNames, key)
 	local lspArr = {}
 	for _, server in pairs(serverNames) do
 		if server.lsp then
-			table.insert(lspArr, server.lsp)
+			table.insert(lspArr, server[key])
 		end
 	end
 	return lspArr
 end
 
-local function extractFormatterValues(serverNames)
-	local formatterArr = {}
-	for _, server in pairs(serverNames) do
-		if server.formatter then
-			table.insert(formatterArr, server.formatter)
-		end
+local function mergeTables(a, b)
+	for _, v in ipairs(b) do
+		table.insert(a, v)
 	end
-	return formatterArr
 end
 
-local lspServers = extractLspValues(servers)
-local lspFormatters = extractFormatterValues(servers)
+local lspServers = extractValues(servers, "lsp")
+local lspFormatters = extractValues(servers, "formatter")
+local lspDiagnostics = extractValues(servers, "diagnostics")
 
 return {
 	{
@@ -72,7 +77,12 @@ return {
 			"williamboman/mason.nvim",
 			"jose-elias-alvarez/null-ls.nvim",
 		},
-		config = { ensure_installed = lspFormatters },
+		config = function()
+			local packages = {}
+			mergeTables(packages, lspFormatters)
+			mergeTables(packages, lspDiagnostics)
+			require("mason-null-ls").setup({ ensure_installed = packages })
+		end,
 	},
 	{
 		"nvimtools/none-ls.nvim",
@@ -81,8 +91,35 @@ return {
 			local formatSources = {}
 			for _, name in ipairs(lspFormatters) do
 				local formatter = null_ls.builtins.formatting[name]
-				if formatter then
+				if name == "shfmt" then
+					table.insert(
+						formatSources,
+						formatter.with({
+							filetypes = { "sh", "zsh" }, -- Replace with actual args
+						})
+					)
+				elseif name == "" then
+					table.insert(formatSources, formatter.with({ filetypes = { "sh", "zsh" } }))
+				elseif formatter then
 					table.insert(formatSources, formatter)
+				else
+					print("Formatter not found: " .. name)
+				end
+			end
+			local diagnosticsSources = {}
+			for _, name in ipairs(lspDiagnostics) do
+				local diagnostics = null_ls.builtins.diagnostics[name]
+				if name == "shellcheck" then
+					table.insert(
+						formatSources,
+						diagnostics.with({
+							filetypes = { "sh", "zsh" }, -- Replace with actual args
+						})
+					)
+				elseif name == "" then
+					table.insert(formatSources, diagnostics.with({ filetypes = { "sh", "zsh" } }))
+				elseif diagnostics then
+					table.insert(formatSources, diagnostics)
 				else
 					print("Formatter not found: " .. name)
 				end
