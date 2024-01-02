@@ -14,9 +14,12 @@ local servers = {
 		lsp = "terraformls",
 	},
 	shell = {
-		lsp = "bashls",
+		-- lsp = "bashls",
 		formatter = "shfmt",
-		diagnostics = "shellcheck",
+		-- diagnostics = "shellcheck",
+	},
+	docker = {
+		lsp = "dockerls",
 	},
 }
 
