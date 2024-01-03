@@ -90,3 +90,19 @@ end, { desc = "Previous todo comment" })
 Keymap({ "n", "v" }, "<leader>le", require("luasnip.loaders").edit_snippet_files)
 Keymap({ "n", "v" }, "<leader>ls", "<cmd>source ~/.config/nvim/lua/plugins/luasnip.lua<CR>")
 -- LUASNIP
+
+Keymap("n", "<Esc>[17;5u", "<Nop>", { noremap = true, silent = true })
+
+function _G.send_line_to_terminal()
+	local line = vim.fn.getline(".")
+	-- Replace single quotes with double quotes
+	line = line:gsub("'", '"')
+	-- Use double quotes for the cmd part
+	local cmd = "TermExec cmd='" .. line .. "'"
+
+	vim.cmd(cmd)
+end
+
+vim.api.nvim_create_user_command("SendLineToTerminal", send_line_to_terminal, {})
+
+Keymap("n", "<leader>sl", ":SendLineToTerminal<CR>", { noremap = true, silent = true })
