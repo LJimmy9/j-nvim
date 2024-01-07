@@ -12,17 +12,19 @@ v.number = true
 v.relativenumber = false
 v.signcolumn = "no"
 
-v.tabstop = 2 -- insert 2 spaces for a tab
+v.tabstop = 2    -- insert 2 spaces for a tab
 v.shiftwidth = 2 -- the number of spaces inserted for each indentation
 v.autoindent = true
 v.smartindent = true
 v.expandtab = true
 v.swapfile = false
 
-v.wrap = true -- display lines as one long line
+v.wrap = true      -- display lines as one long line
 v.updatetime = 100 -- faster completion (4000ms default)
 
 v.termguicolors = true
+
+v.fileformat = "unix"
 
 vim.cmd("colorscheme base16-tokyo-night-terminal-light")
 -- vim.cmd("colorscheme base16-gruvbox-material-light-soft")
