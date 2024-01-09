@@ -26,5 +26,6 @@ v.termguicolors = true
 
 v.fileformat = "unix"
 
-vim.cmd("colorscheme base16-tokyo-night-terminal-light")
--- vim.cmd("colorscheme base16-gruvbox-material-light-soft")
+
+-- vim.cmd("colorscheme base16-tokyo-night-terminal-light")
+vim.cmd("colorscheme base16-gruvbox-material-dark-soft")
