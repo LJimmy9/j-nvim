@@ -6,6 +6,8 @@ local keys = {
   cm = "c",
 }
 
+
+
 return {
   "nvim-treesitter/nvim-treesitter-textobjects",
   event = { "BufReadPost", "BufNewFile" },
@@ -18,7 +20,7 @@ return {
         select = {
           enable = true,
           -- Automatically jump forward to textobj, similar to targets.vim
-          lookahead = false,
+          lookahead = true,
 
           keymaps = {
             -- You can use the capture groups defined in textobjects.scm
@@ -68,13 +70,13 @@ return {
           enable = true,
           swap_next = {
             ["<leader>m" .. keys.param] = "@parameter.inner", -- swap object under cursor with next
-            ["<leader>m" .. keys.func] = "@function.outer", -- swap object under cursor with next
-            ["<leader>m" .. keys.cm] = "@comment.outer", -- swap object under cursor with next
+            ["<leader>m" .. keys.func] = "@function.outer",   -- swap object under cursor with next
+            ["<leader>m" .. keys.cm] = "@comment.outer",      -- swap object under cursor with next
           },
           swap_previous = {
             ["<leader>m" .. string.upper(keys.param)] = "@parameter.inner", -- swap object under cursor with previous
-            ["<leader>m" .. string.upper(keys.func)] = "@function.outer", -- swap object under cursor with next
-            ["<leader>m" .. string.upper(keys.cm)] = "@comment.outer", -- swap object under cursor with next
+            ["<leader>m" .. string.upper(keys.func)] = "@function.outer",   -- swap object under cursor with next
+            ["<leader>m" .. string.upper(keys.cm)] = "@comment.outer",      -- swap object under cursor with next
           },
         },
         move = {

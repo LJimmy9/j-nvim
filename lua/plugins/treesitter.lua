@@ -5,7 +5,6 @@ return {
     build = ":TSUpdate",
     dependencies = {
       "windwp/nvim-ts-autotag",
-      'TornaxO7/tree-setter'
     },
     config = function()
       local treesitter = require("nvim-treesitter.configs")
@@ -14,9 +13,6 @@ return {
       treesitter.setup({ -- enable syntax highlighting
         highlight = {
           enable = true,
-        },
-        tree_setter = {
-          enable = true
         },
         indent = { enable = true },
         -- enable autotagging (w/ nvim-ts-autotag plugin)
@@ -59,7 +55,7 @@ return {
           },
         },
       })
-      vim.treesitter.language.register('c', 'cpp')
+      -- vim.treesitter.language.register('c', 'cpp')
     end,
   },
 }

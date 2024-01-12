@@ -116,20 +116,10 @@ vim.api.nvim_create_user_command("SendLineToTerminal", send_line_to_terminal, {}
 
 Keymap("n", "<leader>sl", ":SendLineToTerminal<CR>", { noremap = true, silent = true })
 
-local inlay_toggled = false
 
 local function toggle_inlay()
-  if inlay_toggled then
-    inlay_toggled = false
-    vim.cmd("RustDisableInlayHints")
-  else
-    inlay_toggled = true
-    vim.cmd("RustEnableInlayHints")
-  end
+  require("lsp-inlayhints").toggle()
 end
 
 vim.api.nvim_create_user_command("RustToggleInlayHints", toggle_inlay, {})
 Keymap("n", "<leader>rr", ":RustToggleInlayHints<CR>", { noremap = true, silent = true })
-
-
-
