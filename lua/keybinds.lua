@@ -91,6 +91,10 @@ Keymap({ "n", "v" }, "<leader>le", require("luasnip.loaders").edit_snippet_files
 Keymap({ "n", "v" }, "<leader>ls", "<cmd>source ~/.config/nvim/lua/plugins/luasnip.lua<CR>")
 -- LUASNIP
 
+-- NOICE
+Keymap({ "n", "v" }, "<leader>nd", "<cmd>NoiceDismiss<CR>")
+-- NOICE
+
 Keymap("n", "<Esc>[17;5u", "<Nop>", { noremap = true, silent = true })
 
 function _G.send_line_to_terminal()
