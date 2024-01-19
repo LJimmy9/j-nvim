@@ -1,7 +1,9 @@
 print("keybinds loaded")
 -- GENERAL
-Keymap("n", "H", "Hzz")
-Keymap("n", "L", "Lzz")
+-- Keymap("n", "H", "Hzz")
+-- Keymap("n", "L", "Lzz")
+Keymap({ "n", "v" }, "H", "_")
+Keymap({ "n", "v" }, "L", "$")
 Keymap("n", "<leader>so", function()
   RunCommands({ "w", "so" })
 end)
@@ -103,9 +105,10 @@ function _G.send_line_to_terminal()
   local line = vim.fn.getline(".")
   line = line:gsub("//", "")
   line = line:gsub("#", "")
+  line = line:gsub("-- ", "")
 
   -- Base64 encode the line
-  local encoded = vim.fn.system("echo -n " .. vim.fn.shellescape(line) .. " | base64")
+  local encoded = vim.fn.system("echo -n " .. (line) .. " | base64")
 
   -- Trim the newline character that system() adds
   encoded = encoded:gsub("\n", "")
