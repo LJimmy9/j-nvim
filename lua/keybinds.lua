@@ -105,7 +105,7 @@ function _G.send_line_to_terminal()
   local line = vim.fn.getline(".")
   line = line:gsub("//", "")
   line = line:gsub("#", "")
-  line = line:gsub("-- ", "")
+  -- line = line:gsub("-", "")
 
   -- Base64 encode the line
   local encoded = vim.fn.system("echo -n " .. (line) .. " | base64")
