@@ -10,7 +10,7 @@ v.smartcase = true
 v.smartindent = true
 v.number = true
 v.relativenumber = false
-v.signcolumn = "no"
+v.signcolumn = "yes"
 
 v.tabstop = 2    -- insert 2 spaces for a tab
 v.shiftwidth = 2 -- the number of spaces inserted for each indentation

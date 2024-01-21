@@ -1,11 +1,11 @@
 return {
-
   "mrcjkb/rustaceanvim",
   version = "^3",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "mfussenegger/nvim-dap",
     "rcarriga/nvim-dap-ui",
+    "theHamsta/nvim-dap-virtual-text"
     -- {
     --   "lvimuser/lsp-inlayhints.nvim",
     --   opts = {}
@@ -48,7 +48,7 @@ return {
             },
           },
         }
-      }
+      },
     }
   end
 }

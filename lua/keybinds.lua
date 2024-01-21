@@ -97,6 +97,13 @@ Keymap({ "n", "v" }, "<leader>ls", "<cmd>source ~/.config/nvim/lua/plugins/luasn
 Keymap({ "n", "v" }, "<leader>nd", "<cmd>NoiceDismiss<CR>")
 -- NOICE
 
+-- DAP
+Keymap("n", "<leader>br", function()
+  local dap = require('dap')
+  dap.set_breakpoint()
+end)
+-- DAP
+
 Keymap("n", "<Esc>[17;5u", "<Nop>", { noremap = true, silent = true })
 
 function _G.send_line_to_terminal()
