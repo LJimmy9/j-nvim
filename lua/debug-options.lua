@@ -16,5 +16,6 @@ end
 vim.keymap.set("n", "<leader>br", ':DapToggleBreakpoint<CR>')
 vim.keymap.set("n", "<leader>bt", ':DapUiToggle<CR>')
 vim.keymap.set("n", "<leader>bd", ':RustLsp debuggables<CR>')
+vim.keymap.set("n", "<leader>bl", ':RustLsp debuggables last<CR>')
 vim.keymap.set("n", "<leader>bx", ':DapTerminate<CR>')
 vim.keymap.set("n", "<leader>bo", ':DapStepOver<CR>')

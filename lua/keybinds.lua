@@ -47,7 +47,7 @@ Keymap("n", "K", vim.lsp.buf.hover)
 Keymap("n", "gd", vim.lsp.buf.definition)
 Keymap("n", "<leader>ca", vim.lsp.buf.code_action)
 Keymap("n", "<leader>rn", vim.lsp.buf.rename)
-Keymap("n", "<leader>gr", "<cmd>Telescope lsp_references<CR>")
+Keymap("n", "gi", "<cmd>Telescope lsp_references<CR>")
 -- LSP
 
 -- TELESCOPE
@@ -130,10 +130,26 @@ vim.api.nvim_create_user_command("SendLineToTerminal", send_line_to_terminal, {}
 
 Keymap("n", "<leader>sl", ":SendLineToTerminal<CR>", { noremap = true, silent = true })
 
+-- local function run_and_redir()
+--   vim.cmd("redir @a")
+--   vim.cmd("RustRun")
+--   vim.cmd("redir END")
 
-local function toggle_inlay()
-  require("lsp-inlayhints").toggle()
-end
 
-vim.api.nvim_create_user_command("RustToggleInlayHints", toggle_inlay, {})
-Keymap("n", "<leader>rr", ":RustToggleInlayHints<CR>", { noremap = true, silent = true })
+-- local bufnr = vim.api.nvim_create_buf(false, true)
+-- vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, vim.fn.split(vim.fn.getreg('a'), '\n'))
+--
+-- local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+-- for i, line in ipairs(lines) do
+--   if i == 0 then
+--   else
+--     lines[i] = "// " .. line
+--   end
+-- end
+-- vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
+-- vim.fn.setreg('a', vim.fn.join(lines, "\n"))
+-- vim.api.nvim_buf_delete(bufnr, { force = true })
+-- end
+
+Keymap("n", "<leader>rr", [[:RustRun<CR>]], { noremap = true, silent = true })
+Keymap("n", "<leader>ap", [["ap]], { noremap = true, silent = true })
