@@ -7,10 +7,13 @@ return {
     },
     -- User defined loops
     additions = {
-      { "Foo",   "Bar",   "Baz" },
-      { "tic",   "tac",   "toe" },
-      { "north", "south", "east", "west" },
-      { "dark",  "light" },
+      { "Foo", "Bar", "Baz" },
+      { "tic", "tac", "toe" }
+    },
+    allow_caps_additions = {
+      { "enable", "disable" },
+      { "north",  "south",  "east", "west" },
+      { "dark",   "light" },
       { "first",
         "second",
         "third",
@@ -20,22 +23,16 @@ return {
         "seventh",
         "eighth",
         "ninth",
-        "tenth" },
-      {
-        "one",
-        "two",
-        "three",
-        "four",
-        "five",
-        "six",
-        "seven",
-        "eight",
-        "nine",
-        "ten"
-      }
-    },
-    allow_caps_additions = {
-      { "enable", "disable" },
-    },
-  },
+        "tenth"
+      },
+      { "get",  "post",   "put",  "delete" },
+      { "low",  "medium", "high" },
+      { "day",  "night" },
+      { "slow", "normal", "fast" },
+      { "up",   "down",   "left", "right" },
+      { "jump", "run",    "walk", "crouch" },
+      { "play", "pause",  "stop", "restart" },
+      { "easy", "medium", "hard", "extreme" }
+    }
+  }
 }
