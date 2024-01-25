@@ -89,8 +89,8 @@ end, { desc = "Previous todo comment" })
 --  TODO
 
 -- LUASNIP
-Keymap({ "n", "v" }, "<leader>le", require("luasnip.loaders").edit_snippet_files)
-Keymap({ "n", "v" }, "<leader>ls", "<cmd>source ~/.config/nvim/lua/plugins/luasnip.lua<CR>")
+Keymap({ "n", "v" }, "<leader>ls", require("luasnip.loaders").edit_snippet_files)
+-- Keymap({ "n", "v" }, "<leader>ls", "<cmd>source ~/.config/nvim/lua/plugins/luasnip.lua<CR>")
 -- LUASNIP
 
 -- NOICE

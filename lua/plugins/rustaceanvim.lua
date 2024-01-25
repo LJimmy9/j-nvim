@@ -5,7 +5,16 @@ return {
     "nvim-lua/plenary.nvim",
     "mfussenegger/nvim-dap",
     "rcarriga/nvim-dap-ui",
-    "theHamsta/nvim-dap-virtual-text"
+    "theHamsta/nvim-dap-virtual-text",
+    {
+      "folke/trouble.nvim",
+      dependencies = { "nvim-tree/nvim-web-devicons" },
+      opts = {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      },
+    }
     -- {
     --   "lvimuser/lsp-inlayhints.nvim",
     --   opts = {}
