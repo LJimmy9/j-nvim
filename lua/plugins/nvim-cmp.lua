@@ -9,10 +9,10 @@ return {
   event = "InsertEnter",
   dependencies = {
     "L3MON4D3/LuaSnip",
-    "hrsh7th/cmp-buffer",     -- source for text in buffer
-    "hrsh7th/cmp-path",       -- source for file system paths
+    "hrsh7th/cmp-buffer",       -- source for text in buffer
+    "hrsh7th/cmp-path",         -- source for file system paths
     "saadparwaiz1/cmp_luasnip", -- for autocompletion
-    "onsails/lspkind.nvim",   -- vs-code like pictograms
+    "onsails/lspkind.nvim",     -- vs-code like pictograms
     "hrsh7th/cmp-nvim-lsp-signature-help",
   },
 
@@ -22,6 +22,9 @@ return {
     local lspkind = require("lspkind")
 
     cmp.setup({
+      completion = {
+        autocomplete = false,
+      },
       snippet = {
         expand = function(args)
           require("luasnip").lsp_expand(args.body) -- For `luasnip` users.

@@ -19,6 +19,11 @@ Keymap("v", "J", ":m '>1<CR>gv=gv")
 Keymap("v", "K", ":m '<-2<CR>gv=gv")
 Keymap({ "n", "v" }, "<leader>d", [["_d]])
 
+
+Keymap("n", "g;", [[g;zz]])
+Keymap("n", "g,", [[g,zz]])
+
+
 Keymap("n", "<leader>gd", function()
   RunCommands({ ":normal *", ":nohl" })
   RunCommands({ ":normal zz" })
@@ -30,11 +35,20 @@ Keymap("n", "<leader>ss", function()
 end)
 -- GENERAL
 
+Keymap({ "n", "v" }, "y", [[ygv<Esc>]])
+
 -- Open command list
 Keymap("n", "<leader>cl", ":<C-f>")
 
 Keymap("i", "<C-l>", "<Right>")
 Keymap("i", "<C-h>", "<Left>")
+
+Keymap("n", "<C-o>", "<C-o>zz")
+Keymap("n", "<C-i>", "<C-o>zz")
+Keymap("n", "n", "nzz")
+Keymap("n", "N", "Nzz")
+Keymap("n", "}", "}zz")
+Keymap("n", "{", "{zz")
 
 Keymap("v", "<leader>cw", ":s///g<Left><Left><Left>")
 
@@ -152,4 +166,6 @@ Keymap("n", "<leader>sl", ":SendLineToTerminal<CR>", { noremap = true, silent = 
 -- end
 
 Keymap("n", "<leader>rr", [[:RustRun<CR>]], { noremap = true, silent = true })
+Keymap("n", "<leader>ap", [["ap]], { noremap = true, silent = true })
+Keymap("n", "<leader>ap", [["ap]], { noremap = true, silent = true })
 Keymap("n", "<leader>ap", [["ap]], { noremap = true, silent = true })
