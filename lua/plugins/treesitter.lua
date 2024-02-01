@@ -48,12 +48,13 @@ return {
         incremental_selection = {
           enable = true,
           keymaps = {
-            init_selection = "<leader>vv",
-            node_incremental = "V",
-            scope_incremental = "s",
-            node_decremental = "v",
+            init_selection = ";",
+            node_incremental = ";",
+            scope_incremental = ".",
+            node_decremental = ":",
           },
         },
+
       })
       -- vim.treesitter.language.register('c', 'cpp')
     end,

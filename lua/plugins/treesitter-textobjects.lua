@@ -4,8 +4,12 @@ local keys = {
   param = "p",
   block = "b",
   cm = "c",
+  scope = 's'
 }
 
+local function test(a, b)
+  print("something")
+end
 
 
 return {
@@ -27,6 +31,11 @@ return {
             ["a="] = { query = "@assignment.outer", desc = "Select outer part of an assignment region" },
             ["i="] = { query = "@assignment.inner", desc = "Select inner part of an assignment region" },
 
+            ["a" .. keys.scope] = {
+              query = "@scope",
+              query_group = "locals",
+              desc = "Select language scope",
+            },
             ["a" .. keys.param] = {
               query = "@parameter.outer",
               desc = "Select outer part of a parameter/field region",
@@ -69,14 +78,14 @@ return {
         swap = {
           enable = true,
           swap_next = {
-            ["<leader>m" .. keys.param] = "@parameter.inner", -- swap object under cursor with next
-            ["<leader>m" .. keys.func] = "@function.outer",   -- swap object under cursor with next
-            ["<leader>m" .. keys.cm] = "@comment.outer",      -- swap object under cursor with next
+            ["<leader>s" .. keys.param] = "@parameter.inner", -- swap object under cursor with next
+            ["<leader>s" .. keys.func] = "@function.outer",   -- swap object under cursor with next
+            ["<leader>s" .. keys.cm] = "@comment.outer",      -- swap object under cursor with next
           },
           swap_previous = {
-            ["<leader>m" .. string.upper(keys.param)] = "@parameter.inner", -- swap object under cursor with previous
-            ["<leader>m" .. string.upper(keys.func)] = "@function.outer",   -- swap object under cursor with next
-            ["<leader>m" .. string.upper(keys.cm)] = "@comment.outer",      -- swap object under cursor with next
+            ["<leader>s" .. string.upper(keys.param)] = "@parameter.inner", -- swap object under cursor with previous
+            ["<leader>s" .. string.upper(keys.func)] = "@function.outer",   -- swap object under cursor with next
+            ["<leader>s" .. string.upper(keys.cm)] = "@comment.outer",      -- swap object under cursor with next
           },
         },
         move = {
