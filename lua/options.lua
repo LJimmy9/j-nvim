@@ -1,7 +1,7 @@
 local v = vim.opt
 -- disable netrw at the very start of your init.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 v.clipboard = "unnamedplus"
 v.showtabline = 0
@@ -26,6 +26,6 @@ v.termguicolors = true
 
 v.fileformat = "unix"
 
-
+vim.cmd("colorscheme habamax")
 -- vim.cmd("colorscheme base16-tokyo-night-terminal-light")
-vim.cmd("colorscheme base16-gruvbox-material-light-soft")
+-- vim.cmd("colorscheme base16-gruvbox-material-light-soft")

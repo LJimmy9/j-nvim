@@ -7,11 +7,6 @@ local keys = {
   scope = 's'
 }
 
-local function test(a, b)
-  print("something")
-end
-
-
 return {
   "nvim-treesitter/nvim-treesitter-textobjects",
   event = { "BufReadPost", "BufNewFile" },

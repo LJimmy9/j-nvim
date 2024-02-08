@@ -7,7 +7,12 @@ Keymap({ "n", "v" }, "L", "$")
 Keymap("n", "<leader>so", function()
   RunCommands({ "w", "so" })
 end)
-Keymap("n", "<leader>er", ":NvimTreeToggle<CR>")
+
+-- Keymap("n", "<leader>er", ":NvimTreeToggle<CR>")
+Keymap("n", "<leader>er", function()
+  require("mini.files").open(vim.api.nvim_buf_get_name(0))
+end)
+
 Keymap({ "n", "v" }, "<leader>nh", ":nohl<CR>")
 Keymap("n", "<leader>lr", ":LspRestart<CR>")
 Keymap("n", "<leader>qq", ":q<CR>")
@@ -19,10 +24,8 @@ Keymap("v", "J", ":m '>1<CR>gv=gv")
 Keymap("v", "K", ":m '<-2<CR>gv=gv")
 Keymap({ "n", "v" }, "<leader>d", [["_d]])
 
-
 Keymap("n", "g;", [[g;zz]])
 Keymap("n", "g,", [[g,zz]])
-
 
 Keymap("n", "<leader>gd", function()
   RunCommands({ ":normal *", ":nohl" })
@@ -30,9 +33,13 @@ Keymap("n", "<leader>gd", function()
 end)
 
 Keymap("n", "<leader>ss", function()
-  vim.lsp.buf.format()
+  -- vim.lsp.buf.format()
+  if vim.lsp.buf.server_ready() then
+    vim.lsp.buf.format()
+  end
   RunCommands({ "w" })
 end)
+
 -- GENERAL
 
 Keymap({ "n", "v" }, "y", [[ygv<Esc>]])
@@ -44,6 +51,7 @@ Keymap("i", "<C-l>", "<Right>")
 Keymap("i", "<C-h>", "<Left>")
 
 Keymap("n", "<C-o>", "<C-o>zz")
+
 Keymap("n", "<C-i>", "<C-o>zz")
 Keymap("n", "n", "nzz")
 Keymap("n", "N", "Nzz")
@@ -66,12 +74,15 @@ Keymap("n", "gi", "<cmd>Telescope lsp_references<CR>")
 
 -- TELESCOPE
 local builtin = require("telescope.builtin")
+local utils = require("telescope.utils")
 vim.keymap.set("n", "<leader>fj", function()
   builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
     previewer = false,
   }))
 end)
-vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+vim.keymap.set("n", "<leader>ff", function()
+  builtin.find_files()
+end)
 vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>fs", function()
   builtin.grep_string({ search = vim.fn.input("Grep > ") })
@@ -107,17 +118,20 @@ Keymap({ "n", "v" }, "<leader>ls", require("luasnip.loaders").edit_snippet_files
 -- Keymap({ "n", "v" }, "<leader>ls", "<cmd>source ~/.config/nvim/lua/plugins/luasnip.lua<CR>")
 -- LUASNIP
 
--- NOICE
-Keymap({ "n", "v" }, "<leader>nd", "<cmd>NoiceDismiss<CR>")
--- NOICE
-
 -- DAP
 Keymap("n", "<leader>br", function()
-  local dap = require('dap')
+  local dap = require("dap")
   dap.set_breakpoint()
 end)
 -- DAP
 
+-- Neorg
+-- Keymap("n", "<leader>od", ":Neorg workspace default <CR>")
+Keymap("n", "<leader>on", ":Neorg workspace notes")
+Keymap("n", "<leader>od", ":Neorg workspace daily")
+
+
+-- Neorg
 Keymap("n", "<Esc>[17;5u", "<Nop>", { noremap = true, silent = true })
 
 function _G.send_line_to_terminal()
@@ -129,7 +143,7 @@ function _G.send_line_to_terminal()
   -- line = line:gsub("-", "")
 
   -- Base64 encode the line
-  local encoded = vim.fn.system("echo -n " .. (line) .. " | base64")
+  local encoded = vim.fn.system("echo -n " .. line .. " | base64")
 
   -- Trim the newline character that system() adds
   encoded = encoded:gsub("\n", "")
@@ -148,7 +162,6 @@ Keymap("n", "<leader>sl", ":SendLineToTerminal<CR>", { noremap = true, silent = 
 --   vim.cmd("redir @a")
 --   vim.cmd("RustRun")
 --   vim.cmd("redir END")
-
 
 -- local bufnr = vim.api.nvim_create_buf(false, true)
 -- vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, vim.fn.split(vim.fn.getreg('a'), '\n'))

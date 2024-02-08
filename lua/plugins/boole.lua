@@ -14,25 +14,14 @@ return {
       { "enable", "disable" },
       { "north",  "south",  "east", "west" },
       { "dark",   "light" },
-      { "first",
-        "second",
-        "third",
-        "fourth",
-        "fifth",
-        "sixth",
-        "seventh",
-        "eighth",
-        "ninth",
-        "tenth"
-      },
-      { "get",  "post",   "put",  "delete" },
-      { "low",  "medium", "high" },
-      { "day",  "night" },
-      { "slow", "normal", "fast" },
-      { "up",   "down",   "left", "right" },
-      { "jump", "run",    "walk", "crouch" },
-      { "play", "pause",  "stop", "restart" },
-      { "easy", "medium", "hard", "extreme" }
+      { "get",    "post",   "put",  "delete" },
+      { "low",    "medium", "high" },
+      { "day",    "night" },
+      { "slow",   "normal", "fast" },
+      { "up",     "down",   "left", "right" },
+      { "jump",   "run",    "walk", "crouch" },
+      { "play",   "pause",  "stop", "restart" },
+      { "easy",   "medium", "hard", "extreme" }
     }
   }
 }
