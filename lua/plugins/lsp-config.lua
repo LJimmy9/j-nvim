@@ -17,10 +17,10 @@ local servers = {
 	html = {
 		lsp = "html",
 	},
-	htmx = {
-		lsp = "htmx",
-		filetypes = { "html" },
-	},
+	-- htmx = {
+	-- 	lsp = "htmx",
+	-- 	filetypes = { "html" },
+	-- },
 }
 
 local function extractValues(serverNames, key)

@@ -42,11 +42,10 @@ end)
 
 -- GENERAL
 
-Keymap({ "n", "v" }, "y", [[ygv<Esc>]])
+-- Keymap({ "n", "v" }, "y", [[ygv<Esc>]])
 
 -- Open command list
 Keymap("n", "<leader>cl", ":<C-f>")
-
 Keymap("i", "<C-l>", "<Right>")
 Keymap("i", "<C-h>", "<Left>")
 
@@ -69,7 +68,7 @@ Keymap("n", "K", vim.lsp.buf.hover)
 Keymap("n", "gd", vim.lsp.buf.definition)
 Keymap("n", "<leader>ca", vim.lsp.buf.code_action)
 Keymap("n", "<leader>rn", vim.lsp.buf.rename)
-Keymap("n", "gi", "<cmd>Telescope lsp_references<CR>")
+Keymap("n", "<leader>gr", "<cmd>Telescope lsp_references<CR>")
 -- LSP
 
 -- TELESCOPE
@@ -85,7 +84,7 @@ vim.keymap.set("n", "<leader>ff", function()
 end)
 vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>fs", function()
-  builtin.grep_string({ search = vim.fn.input("Grep > ") })
+  builtin.live_grep()
 end)
 
 vim.keymap.set("n", "<leader>ft", function()
@@ -129,7 +128,6 @@ end)
 -- Keymap("n", "<leader>od", ":Neorg workspace default <CR>")
 Keymap("n", "<leader>on", ":Neorg workspace notes")
 Keymap("n", "<leader>od", ":Neorg workspace daily")
-
 
 -- Neorg
 Keymap("n", "<Esc>[17;5u", "<Nop>", { noremap = true, silent = true })
